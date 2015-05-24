@@ -69,7 +69,10 @@ img {
 
 <div id="summary" class="section level1">
 <h1>Summary</h1>
-<p><em>The data for this project come from this source: <a href="http://groupware.les.inf.puc-rio.br/har" class="uri">http://groupware.les.inf.puc-rio.br/har</a>. Thanks for their generosity in allowing their data to be used for my assignment. </em>This analysis predicts the subjects’ manner in performing weight lifting exercises. This analysis collects the data from accelerometers on the belt, forearm, arm, and dumbell of 6 participants. The analysis will use prediction model to predict 20 different test cases.</p>
+<ul>
+<li>The data for this project come from this source: <a href="http://groupware.les.inf.puc-rio.br/har" class="uri">http://groupware.les.inf.puc-rio.br/har</a>. Thanks for their generosity in allowing their data to be used for my assignment.</li>
+<li>This analysis predicts the subjects’ manner in performing weight lifting exercises. This analysis collects the data from accelerometers on the belt, forearm, arm, and dumbell of 6 participants. The analysis will use prediction model to predict 20 different test cases.</li>
+</ul>
 </div>
 <div id="import-data" class="section level1">
 <h1>Import Data</h1>
@@ -144,14 +147,14 @@ model</code></pre>
 ##                      Number of trees: 500
 ## No. of variables tried at each split: 7
 ## 
-##         OOB estimate of  error rate: 0.35%
+##         OOB estimate of  error rate: 0.37%
 ## Confusion matrix:
-##      A    B    C    D    E class.error
-## A 3348    0    0    0    0 0.000000000
-## B    9 2268    2    0    0 0.004826678
-## C    0   10 2043    1    0 0.005355404
-## D    0    0   12 1917    1 0.006735751
-## E    0    0    0    6 2159 0.002771363</code></pre>
+##      A    B    C    D    E  class.error
+## A 3346    2    0    0    0 0.0005973716
+## B    5 2272    2    0    0 0.0030715226
+## C    0   11 2042    1    0 0.0058422590
+## D    0    0   16 1913    1 0.0088082902
+## E    0    0    0    5 2160 0.0023094688</code></pre>
 </div>
 <div id="out-of-sample-accuracy" class="section level1">
 <h1>Out of Sample Accuracy</h1>
@@ -164,33 +167,33 @@ confusionMatrix(testmodel_prediction, testmodel$classe)</code></pre>
 ## 
 ##           Reference
 ## Prediction    A    B    C    D    E
-##          A 2231    6    0    0    0
-##          B    0 1510    6    0    0
-##          C    0    2 1362    7    0
-##          D    0    0    0 1278    0
-##          E    1    0    0    1 1442
+##          A 2232    4    0    0    0
+##          B    0 1513    3    0    0
+##          C    0    1 1362    9    0
+##          D    0    0    3 1276    1
+##          E    0    0    0    1 1441
 ## 
 ## Overall Statistics
 ##                                           
-##                Accuracy : 0.9971          
-##                  95% CI : (0.9956, 0.9981)
+##                Accuracy : 0.9972          
+##                  95% CI : (0.9958, 0.9982)
 ##     No Information Rate : 0.2845          
 ##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
 ##                                           
-##                   Kappa : 0.9963          
+##                   Kappa : 0.9965          
 ##  Mcnemar's Test P-Value : NA              
 ## 
 ## Statistics by Class:
 ## 
 ##                      Class: A Class: B Class: C Class: D Class: E
-## Sensitivity            0.9996   0.9947   0.9956   0.9938   1.0000
-## Specificity            0.9989   0.9991   0.9986   1.0000   0.9997
-## Pos Pred Value         0.9973   0.9960   0.9934   1.0000   0.9986
-## Neg Pred Value         0.9998   0.9987   0.9991   0.9988   1.0000
+## Sensitivity            1.0000   0.9967   0.9956   0.9922   0.9993
+## Specificity            0.9993   0.9995   0.9985   0.9994   0.9998
+## Pos Pred Value         0.9982   0.9980   0.9927   0.9969   0.9993
+## Neg Pred Value         1.0000   0.9992   0.9991   0.9985   0.9998
 ## Prevalence             0.2845   0.1935   0.1744   0.1639   0.1838
-## Detection Rate         0.2843   0.1925   0.1736   0.1629   0.1838
-## Detection Prevalence   0.2851   0.1932   0.1747   0.1629   0.1840
-## Balanced Accuracy      0.9992   0.9969   0.9971   0.9969   0.9998</code></pre>
+## Detection Rate         0.2845   0.1928   0.1736   0.1626   0.1837
+## Detection Prevalence   0.2850   0.1932   0.1749   0.1631   0.1838
+## Balanced Accuracy      0.9996   0.9981   0.9970   0.9958   0.9996</code></pre>
 <ul>
 <li>From the table, the model shows 99.6% accuracy.</li>
 </ul>

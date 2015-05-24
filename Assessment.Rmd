@@ -6,8 +6,8 @@ output: html_document
 ---
 
 #Summary
-*The data for this project come from this source: http://groupware.les.inf.puc-rio.br/har. Thanks for their generosity in allowing their data to be used for my assignment. 
-*This analysis predicts the subjects' manner in performing weight lifting exercises. This analysis collects the data from accelerometers on the belt, forearm, arm, and dumbell of 6 participants. The analysis will use prediction model to predict 20 different test cases. 
+* The data for this project come from this source: http://groupware.les.inf.puc-rio.br/har. Thanks for their generosity in allowing their data to be used for my assignment. 
+* This analysis predicts the subjects' manner in performing weight lifting exercises. This analysis collects the data from accelerometers on the belt, forearm, arm, and dumbell of 6 participants. The analysis will use prediction model to predict 20 different test cases. 
 
 #Import Data
 * load the necessary library.
