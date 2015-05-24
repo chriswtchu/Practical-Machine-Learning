@@ -1,0 +1,72 @@
+---
+title: "Practical Machine Learning - Peer Assessment"
+author: "Chris Chu"
+date: "24 May, 2015"
+output: html_document
+---
+
+#Summary
+*The data for this project come from this source: http://groupware.les.inf.puc-rio.br/har. Thanks for their generosity in allowing their data to be used for my assignment. 
+*This analysis predicts the subjects' manner in performing weight lifting exercises. This analysis collects the data from accelerometers on the belt, forearm, arm, and dumbell of 6 participants. The analysis will use prediction model to predict 20 different test cases. 
+
+#Import Data
+* load the necessary library.
+* load the data.
+```{r}
+library(caret)
+library(randomForest)
+
+testing         <- read.table("pml-testing.csv" ,sep = "," , header = TRUE, na.strings = c("", "NA", "NULL"))
+training        <- read.table("pml-training.csv" , sep = "," , header = TRUE, na.strings = c("", "NA", "NULL"))
+```
+
+#Data checking
+* Check whether the dimension of of the training and testing dataset match.
+* Check whether the dataset has N/A values
+```{r}
+dim(training)
+dim(testing)
+
+trainingna      <- sapply(training, function(x) {sum(is.na(x))})
+table(trainingna)
+testingna       <- sapply(testing, function(x) {sum(is.na(x))})
+table(testingna)
+```
+
+#Data extraction
+* Extract the row without N/A values into our new dataset
+* Remove all personal and time columns
+```{r}
+training        <- training[, colSums(is.na(training)) == 0]
+testing         <- testing[, colSums(is.na(testing)) == 0]
+
+training        <- training[, c(7:60)]
+testing         <- testing[, c(7:60)]
+```
+
+#Data spliting
+* Split the training data into training and testing datasets. 
+* The splitting is 60% for the training and 40% for the testing.
+```{r}
+inTrain         <- createDataPartition(y = training$classe, p=0.60, list=FALSE)
+trainmodel      <- training[inTrain,]
+testmodel       <- training[-inTrain,]
+```
+
+#Modeling
+* Use the random forests machine learning method with the 60% dataset
+```{r}
+model <- randomForest(classe ~ . , data = trainmodel)
+
+model
+```
+
+#Out of Sample Accuracy
+* Calculate the out of sample accuracy with the 40% dataset
+```{r}
+testmodel_prediction <- predict(model, testmodel)
+confusionMatrix(testmodel_prediction, testmodel$classe)
+```
+* From the table, the model shows 99.6% accuracy.
+
+#I do not have enought time to fninsh the prediction this week. I will continue to work and hand in next week.
